@@ -18,7 +18,8 @@ My project was Log analysis project and this run in python2 and connect to a dat
 5.launch the virtual machine withvagrant up
 6.Once Vagrant installs necessary files use vagrant ssh to continue.
 7.The command line will now start with vagrant. Here cd into the /vagrant folder.
-8.To load the database type psql -d news -f newsdata.sql
-9.To run the database type psql -d news
-10.You must run the commands from the Create views section here to run the python program successfully.
-11.Use command python news.py to run the python program that fetches query results.
+8.Download newsdata.sql file from [here](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+9.To load the database type psql -d news -f newsdata.sql
+10.To run the database type psql -d news
+11.You must run the commands from the Create views section here to run the python program successfully.
+12.Use command python news.py to run the python program that fetches query results.
