@@ -4,18 +4,26 @@ import psycopg2
 
 q_1 = 'Most popular three articles of all time'
 sqlquery_1 = """
-select title, count(*) as views from articles inner join
-log on concat('/article/', articles.slug) = log.path
-where log.status like '%200%'
-group by log.path, articles.title order by views desc limit 3;
+        select articles.title, count(*) as num
+        from articles
+        join log
+        on log.path like concat('/article/%', articles.slug)
+        group by articles.title
+        order by num desc
+        limit 3;
 """
 
 q_2 = 'Most popular article authors of all time'
 sqlquery_2 = """
-select authors.name, count(*) as views from articles inner join
-authors on articles.author = authors.id inner join
-log on concat('/article/', articles.slug) = log.path where
-log.status like '%200%' group by authors.name order by views desc
+        select authors.name, count(*) as num
+        from authors
+        join articles
+        on authors.id = articles.author
+        join log
+        on log.path like concat('/article/%', articles.slug)
+        group by authors.name
+        order by num desc
+        limit 3;
 """
 
 q_3 = 'On which days did more than 1% of requests lead to errors?'
